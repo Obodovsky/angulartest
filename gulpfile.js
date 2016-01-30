@@ -24,8 +24,10 @@ gulp.task('default', ['js', 'css', 'watch']);
 
 gulp.task('js', function () {
   return browserify('./assets/js/bootstrap.js', {debug: true})
-    .bundle().on('error', function(error){
-
+    .bundle().on('error', function errorHandler(error){
+      var args = Array.prototype.slice.call(arguments);
+      notify.onError('Browserify error: <%= error.message %>').apply(this, args);
+      this.emit('end');
     })
   .pipe(vinylSource('combined.js'))
   .pipe(gulp.dest('./build'))
@@ -51,7 +53,7 @@ gulp.task('watch', function () {
     proxy: 'localhost:8880',
     port: 3001,
     open: false,
-    notify: false,
+    notify: false
   });
 
   gulp.watch([
