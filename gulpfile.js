@@ -39,11 +39,13 @@ gulp.task('css', function () {
     .pipe(plumber({
       errorHandler: notify.onError('SASS error: <%= error.message %>')
     }))
+    .pipe(sourceMaps.init())
     .pipe(sass())
     .pipe(autoprefixer({
       browsers: ['last 10 versions']
     }))
     .pipe(rename('combined.css'))
+    .pipe(sourceMaps.write())
     .pipe(gulp.dest('./build'))
     .pipe(browserSync.stream());
 });

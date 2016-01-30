@@ -7,7 +7,15 @@ html
     link(href="/build/combined.css", rel="styleSheet", type="text/css")
 
     title= pageTitle
-  body
+
+    //<div id="container">
+    //  <div data-kit-editor="" class="kit-editor">
+    //  </div>
+    //</div>
+
+  body(data-ng-app="kitApp")
+    #container
+      .kit-editor(data-kit-editor)
 
   //- <script src="/build/combined.js"></script>
   script(src="/build/combined.js")
