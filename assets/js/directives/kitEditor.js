@@ -201,7 +201,8 @@ module.exports = ['d3Factory',
 
           $compile(angular.element($scope.editor.svg.container.append('g')
             .attr('transform', 'translate(0,0)')
-            .attr('data-kit-custom-shape', '').node()))($scope);
+            .attr('data-kit-custom-shape', '')
+            .attr('data-kit-rect', '').node()))($scope);
         });
       }
     }
