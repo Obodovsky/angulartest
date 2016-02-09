@@ -21,17 +21,16 @@ module.exports = ['d3Factory', function(d3Factory) {
           // Условимся, что длина и высота детали зависят от количества отверстий в
           // отношении 1:10 (если 5 горизонтальных отверстий, длина = 50мм)
           function drawTShapeWithHoles(holeRadius, hHoleCount, vHoleCount, positionOfT) {
-            if (hHoleCount <=0 ||holeRadius <=0 || hHoleCount<=0 || vHoleCount<=0) {
-              throw console.error ('введите валидные значения аргументов ( > 0)');
+            if (hHoleCount <= 0 || holeRadius <= 0 || hHoleCount <= 0 || vHoleCount <= 0) {
+              throw console.error('введите валидные значения аргументов ( > 0)');
             }
-            
-            if (hHoleCount < positionOfT || positionOfT <= 0 ) {
+            if (hHoleCount < positionOfT || positionOfT <= 0) {
               throw console.error('недопустимые значения: hHoleCount < positionOfT, positionOfT <= 0');
             }
             var leftWidth = 10 * positionOfT * pixelsPerMm;
             var rightWidth = 10 * (hHoleCount - positionOfT) * pixelsPerMm;
             var singleHoleWidth = 10 * pixelsPerMm;
-            var widht = 10* hHoleCount *pixelsPerMm;
+            var widht = 10 * hHoleCount * pixelsPerMm;
             var height = 10 * 1 * pixelsPerMm;
             var heightOfT = 10 * vHoleCount * pixelsPerMm;
             var borderRadius = 2 * holeRadius;
@@ -57,8 +56,8 @@ module.exports = ['d3Factory', function(d3Factory) {
               borderRadius + ',' + -borderRadius +
               'a' + borderRadius + ',' + borderRadius + ' 0 0 1 ' +
               borderRadius + ',' + borderRadius +
-              'v' + (heightOfT - borderRadius ) +
-              'h' + (rightWidth  - borderRadius - singleHoleWidth) +
+              'v' + (heightOfT - borderRadius) +
+              'h' + (rightWidth - borderRadius - singleHoleWidth) +
               // 'h' + (rightWidth + borderRadius - leftWidth) +
               'a' + borderRadius + ',' + borderRadius + ' 0 0 1 ' +
               borderRadius + ',' + borderRadius +
