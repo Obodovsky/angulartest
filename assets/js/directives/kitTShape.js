@@ -94,7 +94,7 @@ module.exports = ['d3Factory', function(d3Factory) {
               positionOfT));
         }
 
-        drawTShape(d3, $scope.shape.svg.d3Object, $scope.editor.features.pixelsPerMm, 2.5, 5, 2, 1);
+        drawTShape(d3, $scope.shape.svg.d3Object, $scope.editor.features.pixelsPerMm, 2.5, 5, 2, 2);
 
       });
     }
