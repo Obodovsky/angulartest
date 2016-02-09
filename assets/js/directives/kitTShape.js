@@ -24,6 +24,7 @@ module.exports = ['d3Factory', function(d3Factory) {
             if (hHoleCount <=0 ||holeRadius <=0 || hHoleCount<=0 || vHoleCount<=0) {
               throw console.error ('введите валидные значения аргументов ( > 0)');
             }
+            
             if (hHoleCount < positionOfT || positionOfT <= 0 ) {
               throw console.error('недопустимые значения: hHoleCount < positionOfT, positionOfT <= 0');
             }
