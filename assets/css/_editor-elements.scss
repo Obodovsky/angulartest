@@ -5,6 +5,13 @@ g [data-kit-rect] {
   stroke: #000;
 }
 
+g [data-kit-t-shape] {
+  fill: orange;
+  fill-rule: evenodd;
+  stroke-width: 1.5;
+  stroke: #000;
+}
+
 g [data-kit-custom-shape] {
 
 }
