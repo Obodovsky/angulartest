@@ -30,13 +30,12 @@ module.exports = ['d3Factory', function(d3Factory) {
             var leftWidth = 10 * positionOfT * pixelsPerMm;
             var rightWidth = 10 * (hHoleCount - positionOfT) * pixelsPerMm;
             var singleHoleWidth = 10 * pixelsPerMm;
-            var widht = 10 * hHoleCount * pixelsPerMm;
             var height = 10 * 1 * pixelsPerMm;
             var heightOfT = 10 * vHoleCount * pixelsPerMm;
             var borderRadius = 2 * holeRadius;
             var stepH = (leftWidth + rightWidth) / hHoleCount;
             var stepV = heightOfT / vHoleCount;
-            console.log(widht, leftWidth, rightWidth);
+
             // path
             var pathString = '';
 
@@ -58,14 +57,13 @@ module.exports = ['d3Factory', function(d3Factory) {
               borderRadius + ',' + borderRadius +
               'v' + (heightOfT - borderRadius) +
               'h' + (rightWidth - borderRadius - singleHoleWidth) +
-              // 'h' + (rightWidth + borderRadius - leftWidth) +
               'a' + borderRadius + ',' + borderRadius + ' 0 0 1 ' +
               borderRadius + ',' + borderRadius +
               'a' + borderRadius + ',' + borderRadius + ' 0 0 1 ' +
               -borderRadius + ',' + borderRadius +
               'z';
 
-            // for (var j = 0; j < vHoleCount; j++) {
+
             for (var i = 0; i < hHoleCount; i++) {
               pathString += 'M' + (i * stepH + stepH / 2) + ',' +
                 ((height + 2 * heightOfT) / 2 - holeRadius) +
@@ -73,6 +71,7 @@ module.exports = ['d3Factory', function(d3Factory) {
                 'a' + holeRadius + ',' + holeRadius + ' 0 0 1 0' + ',' + -(2 * holeRadius) +
                 'z';
             }
+
             // positionOfT
             for (var j = 0; j < vHoleCount; j++) {
               pathString += 'M' + (positionOfT * stepH + stepH / 2) +
@@ -81,7 +80,7 @@ module.exports = ['d3Factory', function(d3Factory) {
                 'a' + holeRadius + ',' + holeRadius + ' 0 0 1 0' + ',' + -(2 * holeRadius) +
                 'z';
             }
-            // }
+
 
             return pathString;
           }
