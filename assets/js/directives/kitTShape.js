@@ -1,13 +1,11 @@
-module.exports = ['d3Factory', function(d3Factory) {
+module.exports = ['d3Factory', function (d3Factory) {
   // DDO - Directive Definition Object
   return {
     scope: true,
     restrict: 'A',
     priority: 1,
-    link: function($scope, $element, $attrs) {
-      d3Factory.then(function(d3) {
-        console.log('TShape is working');
-
+    link: function ($scope, $element, $attrs) {
+      d3Factory.then(function (d3) {
         $scope.shape.moniker = 'core.TShape';
 
         /**
@@ -16,6 +14,9 @@ module.exports = ['d3Factory', function(d3Factory) {
          * @param {Number} hHoleCount - количество горизонатльных дырокчек
          * @param {Number} vHoleCount - количество вертикальных дырокчек (длинна Т-отрезка)
          * @param {Number} positionOfT - положение Т-образного перекрестья начиная с 1
+         * @param {Object} d3
+         * @param {Object} holder
+         * @param {Number} pixelsPerMm
          */
         function drawTShape(d3, holder, pixelsPerMm, holeRadius, hHoleCount, vHoleCount, positionOfT) {
           // Условимся, что длина и высота детали зависят от количества отверстий в
@@ -24,17 +25,19 @@ module.exports = ['d3Factory', function(d3Factory) {
             if (hHoleCount <= 0 || holeRadius <= 0 || hHoleCount <= 0 || vHoleCount <= 0) {
               throw console.error('введите валидные значения аргументов ( > 0)');
             }
+
             if (hHoleCount < positionOfT || positionOfT <= 0) {
               throw console.error('недопустимые значения: hHoleCount < positionOfT, positionOfT <= 0');
             }
-            var leftWidth = 10 * positionOfT * pixelsPerMm;
-            var rightWidth = 10 * (hHoleCount - positionOfT) * pixelsPerMm;
+
+            var leftWidth       = 10 * positionOfT * pixelsPerMm;
+            var rightWidth      = 10 * (hHoleCount - positionOfT) * pixelsPerMm;
             var singleHoleWidth = 10 * pixelsPerMm;
-            var height = 10 * 1 * pixelsPerMm;
-            var heightOfT = 10 * vHoleCount * pixelsPerMm;
-            var borderRadius = 2 * holeRadius;
-            var stepH = (leftWidth + rightWidth) / hHoleCount;
-            var stepV = heightOfT / vHoleCount;
+            var height          = 10 * pixelsPerMm;
+            var heightOfT       = 10 * vHoleCount * pixelsPerMm;
+            var borderRadius    = 2 * holeRadius;
+            var stepH           = (leftWidth + rightWidth) / hHoleCount;
+            var stepV           = heightOfT / vHoleCount;
 
             // path
             var pathString = '';
@@ -59,10 +62,8 @@ module.exports = ['d3Factory', function(d3Factory) {
               'h' + (rightWidth - borderRadius - singleHoleWidth) +
               'a' + borderRadius + ',' + borderRadius + ' 0 0 1 ' +
               borderRadius + ',' + borderRadius +
-              'a' + borderRadius + ',' + borderRadius + ' 0 0 1 ' +
-              -borderRadius + ',' + borderRadius +
+              'a' + borderRadius + ',' + borderRadius + ' 0 0 1 ' + -borderRadius + ',' + borderRadius +
               'z';
-
 
             for (var i = 0; i < hHoleCount; i++) {
               pathString += 'M' + (i * stepH + stepH / 2) + ',' +
@@ -94,7 +95,6 @@ module.exports = ['d3Factory', function(d3Factory) {
         }
 
         drawTShape(d3, $scope.shape.svg.d3Object, $scope.editor.features.pixelsPerMm, 2.5, 5, 2, 2);
-
       });
     }
   };
