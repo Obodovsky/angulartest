@@ -6,7 +6,7 @@ module.exports = ['d3Factory', function (d3Factory) {
     priority: 1,
     link: function ($scope, $element, $attrs) {
       d3Factory.then(function (d3) {
-        $scope.shape.moniker = 'core.TShape';
+        $scope.shape.moniker = 'core.tshape';
 
         /**
          * Отрисовка Т-образной перевернутой фигуры. Все размеры берем от 0го значения.

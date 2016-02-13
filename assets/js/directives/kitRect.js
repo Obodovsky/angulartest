@@ -9,7 +9,6 @@ module.exports = ['d3Factory', function (d3Factory) {
       // $element - обертка в jqLite
       // $attrs - массив атрибутов для DOM-элемента, на котором висит директива
       d3Factory.then(function (d3) {
-        console.log('Rect is working');
         $scope.shape.moniker = 'core.rect';
 
         function drawRect(d3, holder, pixelsPerMm, holeRadius, hHoleCount, vHoleCount) {
