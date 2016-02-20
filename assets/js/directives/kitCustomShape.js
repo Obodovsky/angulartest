@@ -4,7 +4,7 @@ module.exports = ['d3Factory', function (d3Factory) {
     scope: true,
     restrict: 'A',
     priority: 0,
-    link: function ($scope, $element, $attrs) {
+    link: function ($scope, $element) {
       // $scope унаследована от $rootScope
       // $element - обертка в jqLite
       // $attrs - массив атрибутов для DOM-элемента, на котором висит директива
