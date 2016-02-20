@@ -1,4 +1,14 @@
+g [data-kit-custom-shape], g [data-kit-custom-shape] path {
+  fill-rule: evenodd;
+}
+
 g [data-kit-rect] {
+  fill: orange;
+  stroke-width: 1.5;
+  stroke: #000;
+}
+
+g [data-kit-t-shape] {
   fill: orange;
   fill-rule: evenodd;
   stroke-width: 1.5;
@@ -7,4 +17,21 @@ g [data-kit-rect] {
 
 g [data-kit-custom-shape] {
 
+}
+
+g [data-kit-gear] {
+  .gear {
+    fill-opacity: .85;
+    stroke: gray;
+    stroke-opacity: .25;
+  }
+
+  .gear-inner-circle {
+    fill: #f50500;
+    stroke: gray;
+  }
+
+  .gear-outer-circle {
+    fill: #dd0903;
+  }
 }

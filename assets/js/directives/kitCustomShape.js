@@ -24,12 +24,12 @@ module.exports = ['d3Factory', function (d3Factory) {
           }
         };
 
-        $scope.setDragOrigin = function(x, y) {
+        $scope.setDragOrigin = function (x, y) {
           $scope.shape.dragBehavior.dragOrigin.x = x;
           $scope.shape.dragBehavior.dragOrigin.y = y;
         };
 
-        $scope.snapToGrid = function(coords, factor) {
+        $scope.snapToGrid = function (coords, factor) {
           if (typeof factor === 'undefined')
             var snapFactor = $scope.shape.dragBehavior.snapFactor;
           else
@@ -45,7 +45,7 @@ module.exports = ['d3Factory', function (d3Factory) {
 
         };
 
-        $scope.moveTo = function(x, y, shouldSnap) {
+        $scope.moveTo = function (x, y, shouldSnap) {
           $scope.setDragOrigin(x, y);
 
           var coords = {
@@ -72,7 +72,7 @@ module.exports = ['d3Factory', function (d3Factory) {
             e.stopPropagation();
 
             if (e.which === 1 || e instanceof TouchEvent) {
-              dragInitiated = true;
+              dragInitiated                   = true;
               $scope.editor.behavior.dragging = true;
             }
           })
@@ -86,11 +86,23 @@ module.exports = ['d3Factory', function (d3Factory) {
             }
           })
           .on('dragend', function () {
-            dragInitiated = false;
+            dragInitiated                   = false;
             $scope.editor.behavior.dragging = false;
           });
 
         $scope.shape.svg.d3Object.call($scope.shape.dragBehavior.dragObject);
+
+        var t = d3.transform($scope.shape.svg.d3Object.attr('transform'));
+
+        var tSnapped = $scope.snapToGrid({
+          x: t.translate[0],
+          y: t.translate[1]
+        }, $scope.shape.dragBehavior.snapFactor);
+
+        $scope.setDragOrigin(tSnapped.x, tSnapped.y);
+
+        $scope.shape.svg.d3Object.attr('transform', 'translate(' +
+          tSnapped.x + ',' + tSnapped.y + ')');
       })
     }
   }
