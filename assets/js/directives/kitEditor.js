@@ -203,15 +203,19 @@ module.exports = ['d3Factory',
           //  .attr('transform', 'translate(0,0)')
           //  .attr('data-kit-custom-shape', '')
           //  .attr('data-kit-rect', '').node()))($scope);
-          //
+          $compile(angular.element($scope.editor.svg.container.append('g')
+              .attr('transform', 'translate(0,0)')
+              .attr('data-kit-custom-shape', '')
+              .attr('data-kit-triangle', '').node()))($scope);
+
           //$compile(angular.element($scope.editor.svg.container.append('g')
           //    .attr('transform', 'translate(0,0)')
           //    .attr('data-kit-custom-shape', '')
           //    .attr('data-kit-t-shape', '').node()))($scope);
-          $compile(angular.element($scope.editor.svg.container.append('g')
+         /* $compile(angular.element($scope.editor.svg.container.append('g')
               .attr('transform', 'translate(100,100)')
               .attr('data-kit-custom-shape', '')
-              .attr('data-kit-gear', '').node()))($scope);
+              .attr('data-kit-gear', '').node()))($scope);*/
         });
       }
     }

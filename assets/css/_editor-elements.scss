@@ -15,6 +15,14 @@ g [data-kit-t-shape] {
   stroke: #000;
 }
 
+g [data-kit-triangle] {
+  fill: orange;
+  fill-rule: evenodd;
+  stroke-width: 1.5;
+  stroke: #000;
+  opacity: 0.5;
+}
+
 g [data-kit-custom-shape] {
 
 }
