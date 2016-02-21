@@ -23,6 +23,17 @@ g [data-kit-triangle] {
   opacity: 0.5;
 }
 
+.screw {
+  &.outer-hex {
+    fill: grey;
+    fill-opacity: .85;
+  }
+  &.inner-hex {
+    fill: #000;
+    fill-opacity: .85;
+  }
+}
+
 g [data-kit-custom-shape] {
 
 }

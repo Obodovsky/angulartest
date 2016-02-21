@@ -207,6 +207,10 @@ module.exports = ['d3Factory',
               .attr('transform', 'translate(0,0)')
               .attr('data-kit-custom-shape', '')
               .attr('data-kit-triangle', '').node()))($scope);
+          $compile(angular.element($scope.editor.svg.container.append('g')
+              .attr('transform', 'translate(0,0)')
+              .attr('data-kit-custom-shape', '')
+              .attr('data-kit-screw', '').node()))($scope);
 
           //$compile(angular.element($scope.editor.svg.container.append('g')
           //    .attr('transform', 'translate(0,0)')

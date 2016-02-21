@@ -11,7 +11,14 @@ module.exports = ['d3Factory', function (d3Factory) {
             d3Factory.then(function (d3) {
                 $scope.shape.moniker = 'core.triangle';
 
-
+                /**
+                 *
+                 * @param {Object} d3
+                 * @param {Object} holder
+                 * @param {Number} pixelsPerMm
+                 * @param {Number} holeRadius - диаметр отверстий в детали
+                 * @param {Number} sHoleCount - количество вериткальных и горизонтальных отверствий
+                 */
                 function drawTriangle(d3, holder, pixelsPerMm, holeRadius, sHoleCount) {
                     // Условимся, что длина и высота детали зависят от количества отверстий в
                     // отношении 1:10 (если 5 горизонтальных отверстий, длина = 50мм)
