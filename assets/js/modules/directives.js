@@ -1,6 +1,5 @@
 angular.module('kitApp.directives', [])
   .directive('kitCustomShape', require('../directives/kitCustomShape'))
-  .directive('kitSystemShapeDrawer', require('../directives/kitSystemShapeDrawer'))
   .directive('kitRect', require('../directives/kitRect'))
   .directive('kitTriangle', require('../directives/kitTriangle'))
   .directive('kitTShape', require('../directives/kitTShape'))
