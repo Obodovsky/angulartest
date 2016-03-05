@@ -94,7 +94,7 @@ module.exports = ['d3Factory', function (d3Factory) {
               toothHeight * pixelsPerMm));
         }
 
-        debugger;
+        //debugger;
 
         $scope.shape.svg.gear = drawGearWheel(d3,
           $scope.shape.svg.d3Object,

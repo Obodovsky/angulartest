@@ -134,9 +134,9 @@ module.exports = ['d3Factory',
               })
           };
 
-          g.call($scope.editor.behavior.d3.zoom);
-          $scope.editor.behavior.d3.zoom.event(
-            $scope.editor.svg.container);
+            g.call($scope.editor.behavior.d3.zoom);
+            $scope.editor.behavior.d3.zoom.event(
+              $scope.editor.svg.container);
 
           /**
            * Перемещение рабочей области в указанную точку.
@@ -195,14 +195,14 @@ module.exports = ['d3Factory',
             return $scope.translateTo(center);
           };
 
-          //$scope.center().then(function (result) {
-          //  console.log(result);
-          //});
+          $scope.center().then(function (result) {
+            console.log(result);
+          });
 
-          //$compile(angular.element($scope.editor.svg.container.append('g')
-          //  .attr('transform', 'translate(0,0)')
-          //  .attr('data-kit-custom-shape', '')
-          //  .attr('data-kit-rect', '').node()))($scope);
+          $compile(angular.element($scope.editor.svg.container.append('g')
+            .attr('transform', 'translate(0,0)')
+            .attr('data-kit-custom-shape', '')
+            .attr('data-kit-rect', '').node()))($scope);
           $compile(angular.element($scope.editor.svg.container.append('g')
               .attr('transform', 'translate(0,0)')
               .attr('data-kit-custom-shape', '')
@@ -212,14 +212,14 @@ module.exports = ['d3Factory',
               .attr('data-kit-custom-shape', '')
               .attr('data-kit-screw', '').node()))($scope);
 
-          //$compile(angular.element($scope.editor.svg.container.append('g')
-          //    .attr('transform', 'translate(0,0)')
-          //    .attr('data-kit-custom-shape', '')
-          //    .attr('data-kit-t-shape', '').node()))($scope);
-         /* $compile(angular.element($scope.editor.svg.container.append('g')
+          $compile(angular.element($scope.editor.svg.container.append('g')
+              .attr('transform', 'translate(0,0)')
+              .attr('data-kit-custom-shape', '')
+              .attr('data-kit-t-shape', '').node()))($scope);
+          $compile(angular.element($scope.editor.svg.container.append('g')
               .attr('transform', 'translate(100,100)')
               .attr('data-kit-custom-shape', '')
-              .attr('data-kit-gear', '').node()))($scope);*/
+              .attr('data-kit-gear', '').node()))($scope);
         });
       }
     }

@@ -2,6 +2,14 @@ g [data-kit-custom-shape], g [data-kit-custom-shape] path {
   fill-rule: evenodd;
 }
 
+g [data-kit-custom-shape]{
+  &.dragging, &.dragging path{
+    fill-opacity: 0.6;
+    stroke-opacity: 0.6;
+    cursor: move;
+  }
+}
+
 g [data-kit-rect] {
   fill: orange;
   stroke-width: 1.5;
@@ -20,7 +28,7 @@ g [data-kit-triangle] {
   fill-rule: evenodd;
   stroke-width: 1.5;
   stroke: #000;
-  opacity: 0.5;
+  //opacity: 0.5;
 }
 
 .screw {
