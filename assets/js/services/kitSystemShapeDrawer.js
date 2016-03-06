@@ -210,11 +210,11 @@ module.exports = function () {
      * @param radiusOuter
      * @param toothHeight
      * @param innerAnnulus - внутреннее кольцо
-     * @param innerAnnulus.innerRaduis - внутренний радиус внутреннего кольца
-     * @param innerAnnulus.outerRaduis - внешний радиус внутреннего кольца
+     * @param innerAnnulus.innerRadius - внутренний радиус внутреннего кольца
+     * @param innerAnnulus.outerRadius - внешний радиус внутреннего кольца
      * @param outerAnnulus - внешнее кольцо
-     * @param outerAnnulus.innerRaduis - внутренний радиус внешнего кольца
-     * @param outerAnnulus.outerRaduis - внешний радиус внешнего кольца
+     * @param outerAnnulus.innerRadius - внутренний радиус внешнего кольца
+     * @param outerAnnulus.outerRadius - внешний радиус внешнего кольца
      */
     drawGearWheel: function (d3, holder, pixelsPerMm, teeth,
                              radiusInner, radiusOuter, toothHeight, innerAnnulus, outerAnnulus) {
@@ -256,14 +256,14 @@ module.exports = function () {
       }
 
       var _outerAnnulus = d3.svg.arc()
-        .innerRadius(outerAnnulus.innerRaduis * pixelsPerMm)
-        .outerRadius(outerAnnulus.outerRaduis * pixelsPerMm)
+        .innerRadius(outerAnnulus.innerRadius * pixelsPerMm)
+        .outerRadius(outerAnnulus.outerRadius * pixelsPerMm)
         .startAngle(0)
         .endAngle(Math.PI * 2);
 
       var _innerAnnulus = d3.svg.arc()
-        .innerRadius(innerAnnulus.innerRaduis * pixelsPerMm)
-        .outerRadius(innerAnnulus.outerRaduis * pixelsPerMm)
+        .innerRadius(innerAnnulus.innerRadius * pixelsPerMm)
+        .outerRadius(innerAnnulus.outerRadius * pixelsPerMm)
         .startAngle(0)
         .endAngle(Math.PI * 2);
 

@@ -27,9 +27,13 @@ class Server {
       maxAge: this.env === 'production' ? 31536000 : 0
     }));
 
+    this.clientRouter.get('/partials/pallete', function(req, res, next) {
+      res.render('partials/pallete')
+    });
+
     this.clientRouter.get('/', (req, res, next) => {
       res.render('index', {
-        pageTitle: 'Главная страница',
+        pageTitle: 'Главная страница'
       })
     });
 
@@ -37,6 +41,53 @@ class Server {
       res.json({
         "message" : "Hello from API!"
       })
+    });
+
+    this.apiRouter.get('/data', (req, res, next) => {
+      res.json({
+
+        // teeth, radiusInner, radiusOuter, toothHeight, innerAnnulus, outerAnnulus
+        'core.gear': [
+          [8, 5, 9, 2, {
+            innerRadius: 2.5,
+            outerRadius: 5
+          }, {
+            innerRadius: 2.5,
+            outerRadius: 8
+          }]
+        ],
+
+        // holeRadius, hHoleCount, vHoleCount
+        'core.rect': [
+          [2.5, 1, 1],
+          [2.5, 2, 1],
+          [2.5, 3, 1],
+          [2.5, 4, 1],
+          [2.5, 5, 1],
+          [2.5, 2, 2],
+          [2.5, 3, 3],
+          [2.5, 4, 4]
+        ],
+
+        // holeRadius, sHoleCount
+        'core.triangle': [
+          [2.5, 4],
+          [2.5, 3],
+          [2.5, 5]
+        ],
+
+        // holeRadius, hHoleCount, vHoleCount, positionOfT
+        'core.t-shape': [
+          [2.5, 5, 2, 2],
+          [2.5, 5, 2, 1],
+          [2.5, 5, 2, 3]
+        ],
+
+        // innerHexSize, outerHexSize
+        'core.screw': [
+          [2, 4]
+        ]
+      });
     });
 
     this.app.use('/api', this.apiRouter);

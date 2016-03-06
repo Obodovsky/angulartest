@@ -1,4 +1,4 @@
-g [data-kit-custom-shape], g [data-kit-custom-shape] path {
+g [data-kit-custom-shape], g [data-kit-custom-shape] path, [data-moniker] g {
   fill-rule: evenodd;
 }
 
@@ -10,7 +10,10 @@ g [data-kit-custom-shape]{
   }
 }
 
-g [data-kit-rect] {
+g [data-kit-rect],
+[data-moniker*=rect],
+[data-moniker*=t-shape],
+[data-moniker*=triangle]{
   fill: orange;
   stroke-width: 1.5;
   stroke: #000;
@@ -46,7 +49,7 @@ g [data-kit-custom-shape] {
 
 }
 
-g [data-kit-gear] {
+g [data-kit-gear], [data-moniker*=gear] {
   .gear {
     fill-opacity: .85;
     stroke: gray;

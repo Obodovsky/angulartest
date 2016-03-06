@@ -15,7 +15,8 @@ module.exports = ['d3Factory',
           $scope.editor = {
             testValue: 'c',
             behavior: {
-              dragging: false
+              dragging: false,
+              html5: {}
             },
             grid: {
               sizeXmm: 5,
@@ -199,26 +200,53 @@ module.exports = ['d3Factory',
             console.log(result);
           });
 
-          $compile(angular.element($scope.editor.svg.container.append('g')
-            .attr('transform', 'translate(0,0)')
-            .attr('data-kit-custom-shape', '')
-            .attr('data-kit-rect', '').node()))($scope);
-          $compile(angular.element($scope.editor.svg.container.append('g')
-              .attr('transform', 'translate(0,0)')
-              .attr('data-kit-custom-shape', '')
-              .attr('data-kit-triangle', '').node()))($scope);
-          $compile(angular.element($scope.editor.svg.container.append('g')
-              .attr('transform', 'translate(0,0)')
-              .attr('data-kit-custom-shape', '')
-              .attr('data-kit-screw', '').node()))($scope);
-          $compile(angular.element($scope.editor.svg.container.append('g')
-              .attr('transform', 'translate(0,0)')
-              .attr('data-kit-custom-shape', '')
-              .attr('data-kit-t-shape', '').node()))($scope);
-          $compile(angular.element($scope.editor.svg.container.append('g')
-              .attr('transform', 'translate(100,100)')
-              .attr('data-kit-custom-shape', '')
-              .attr('data-kit-gear', '').node()))($scope);
+          $scope.editor.behavior.html5.dragoverHandler = function() {
+            d3.event.preventDefault();
+          };
+
+          $scope.editor.features.isIE =
+            (typeof $window.document.createElement('span').dragDrop === 'function');
+
+          $scope.editor.behavior.html5.dropHandler = function() {
+            var event = d3.event;
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            var dt = event.dataTransfer;
+            var moniker = dt.getData($scope.editor.features.isIE
+              ? 'text'
+              : 'text/plain');
+
+            if (moniker) {
+              var namespace = moniker.split('.'); // ['core', 'rect', '1']
+
+              function coordinateTransform(screenPoint, svgObject) {
+                var CTM = svgObject.getScreenCTM();
+                return screenPoint.matrixTransform(CTM.inverse());
+              }
+
+              var point = $scope.editor.svg.rootNode.node().createSVGPoint();
+
+              point.x = event.pageX;
+              point.y = event.pageY;
+
+              point = coordinateTransform(point, $scope.editor.svg.container.node());
+
+              $compile(angular.element($scope.editor.svg.container.append('g')
+                // user
+                .attr('transform', 'translate(' + point.x + ',' + point.y + ')')
+                .attr('data-kit-custom-shape', '')
+                .attr('data-id', namespace[namespace.length - 1])
+                .attr('data-kit-'+ namespace[namespace.length - 2], '').node()))($scope);
+            }
+
+          };
+
+          $scope.editor.svg.underlay.on('dragover', $scope.editor.behavior.html5.dragoverHandler);
+          $scope.editor.svg.container.on('dragover', $scope.editor.behavior.html5.dragoverHandler);
+          $scope.editor.svg.underlay.on('drop', $scope.editor.behavior.html5.dropHandler);
+          $scope.editor.svg.container.on('drop', $scope.editor.behavior.html5.dropHandler);
         });
       }
     }
