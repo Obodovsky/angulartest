@@ -1,4 +1,4 @@
-module.exports = ['d3Factory', function (d3Factory) {
+module.exports = ['d3Factory', 'kitSystemShapeDrawerFactory', function (d3Factory, drawer) {
   // DDO - Directive Definition Object
   return {
     scope: true,
@@ -8,9 +8,7 @@ module.exports = ['d3Factory', function (d3Factory) {
       d3Factory.then(function (d3) {
         $scope.shape.moniker = 'core.tshape';
 
-        //function place
-
-        drawTShape(d3, $scope.shape.svg.d3Object, $scope.editor.features.pixelsPerMm, 2.5, 5, 2, 2);
+        drawer.drawTShape(d3, $scope.shape.svg.d3Object, $scope.editor.features.pixelsPerMm, 2.5, 5, 2, 2);
       });
     }
   };

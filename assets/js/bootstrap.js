@@ -3,40 +3,4 @@ require('./modules/d3');
 require('./modules/directives');
 require('./modules/services');
 
-angular.module('kitApp', ['d3', 'kitApp.directives', 'kitApp.services'])
-  .run(function($rootScope){
-
-  });
-
-  //.value('valueName', 123)
-  //
-  //.factory('factoryName', ['d3', function(d3){
-  //  d3.select('.class')// - BAD
-  //}])
-  //
-  //.service('serviceName', ['valueName', SomeClass]);
-
-//function SomeClass(valueName) {
-//  this.value = valueName;
-//}
-
-
-
-// Module
-//   Constant
-//   Value
-//   Factory
-//   Service
-//   Provider
-
-
-// SPA
-
-
-
-
-
-// modules
-
-// dependencies
-// dependency injection
+angular.module('kitApp', ['d3', 'kitApp.directives', 'kitApp.services']);

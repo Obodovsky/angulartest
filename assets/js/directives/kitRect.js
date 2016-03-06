@@ -1,4 +1,4 @@
-module.exports = ['d3Factory', function (d3Factory) {
+module.exports = ['d3Factory', 'kitSystemShapeDrawerFactory', function (d3Factory, drawer) {
   // DDO - Directive Definition Object
   return {
     scope: true,
@@ -13,7 +13,7 @@ module.exports = ['d3Factory', function (d3Factory) {
 
         //function place
 
-        drawRect(d3, $scope.shape.svg.d3Object, $scope.editor.features.pixelsPerMm, 2.5, 5, 1);
+        drawer.drawRect(d3, $scope.shape.svg.d3Object, $scope.editor.features.pixelsPerMm, 2.5, 5, 1);
       });
     }
   }

@@ -1,4 +1,4 @@
-module.exports = ['d3Factory', function (d3Factory) {
+module.exports = ['d3Factory', 'kitSystemShapeDrawerFactory', function (d3Factory, drawer) {
   // DDO - Directive Definition Object
   return {
     scope: true,
@@ -15,7 +15,7 @@ module.exports = ['d3Factory', function (d3Factory) {
 
         //debugger;
 
-        $scope.shape.svg.gear = drawGearWheel(d3,
+        $scope.shape.svg.gear = drawer.drawGearWheel(d3,
           $scope.shape.svg.d3Object,
           $scope.editor.features.pixelsPerMm, 8, 5, 9, 2, {
             innerRaduis: 2.5,
@@ -26,12 +26,12 @@ module.exports = ['d3Factory', function (d3Factory) {
             outerRaduis: 8
           });
 
-    //    var speed = 0.05;
+        //    var speed = 0.05;
         var speed = 0.8;
 
-      //  var start = Date.now();
+        //  var start = Date.now();
         var start = 0;
-       // var i = 0;
+        // var i = 0;
 
         // requestAnimationFrame - аналог setInterval
         // 60 FPS - 1000/60 = 16.67 ms, jank
@@ -40,7 +40,7 @@ module.exports = ['d3Factory', function (d3Factory) {
         //    'rotate(' + (Date.now() - start) * speed + ')');
         //});
 
-        d3.timer(function() {
+        d3.timer(function () {
           $scope.shape.svg.gear.attr('transform',
             'rotate(' + (start++) * speed + ')');
         });
