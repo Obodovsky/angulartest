@@ -1,8 +1,9 @@
 module.exports = ['d3Factory',
   '$window',
   '$q',
+  '$timeout',
   '$compile',
-  function (d3Factory, $window, $q, $compile) {
+  function (d3Factory, $window, $q, $timeout, $compile) {
     // DDO - Directive Definition Object
     return {
       scope: true,
@@ -196,9 +197,9 @@ module.exports = ['d3Factory',
             return $scope.translateTo(center);
           };
 
-          $scope.center().then(function (result) {
-            console.log(result);
-          });
+          //$scope.center().then(function (result) {
+          //  console.log(result);
+          //});
 
           $scope.editor.behavior.html5.dragoverHandler = function() {
             d3.event.preventDefault();
@@ -228,9 +229,11 @@ module.exports = ['d3Factory',
 
               var point = $scope.editor.svg.rootNode.node().createSVGPoint();
 
+              // point будет иметь экранные координаты в системе viewport
               point.x = event.pageX;
               point.y = event.pageY;
 
+              // point будет иметь клиентские координаты в системе user
               point = coordinateTransform(point, $scope.editor.svg.container.node());
 
               $compile(angular.element($scope.editor.svg.container.append('g')
@@ -243,10 +246,23 @@ module.exports = ['d3Factory',
 
           };
 
-          $scope.editor.svg.underlay.on('dragover', $scope.editor.behavior.html5.dragoverHandler);
-          $scope.editor.svg.container.on('dragover', $scope.editor.behavior.html5.dragoverHandler);
-          $scope.editor.svg.underlay.on('drop', $scope.editor.behavior.html5.dropHandler);
-          $scope.editor.svg.container.on('drop', $scope.editor.behavior.html5.dropHandler);
+          $scope.editor.svg.underlay.on('dragover',
+            $scope.editor.behavior.html5.dragoverHandler);
+          $scope.editor.svg.container.on('dragover',
+            $scope.editor.behavior.html5.dragoverHandler);
+          $scope.editor.svg.underlay.on('drop',
+            $scope.editor.behavior.html5.dropHandler);
+          $scope.editor.svg.container.on('drop',
+            $scope.editor.behavior.html5.dropHandler);
+
+
+       //   $scope.editor.testValue = 'd';
+
+          $timeout(function(){
+            $scope.editor.testValue = 'd';
+            $scope.$apply();
+          }, 2000);
+
         });
       }
     }

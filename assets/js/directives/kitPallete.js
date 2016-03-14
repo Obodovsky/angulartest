@@ -1,5 +1,6 @@
 module.exports = ['d3Factory',
-  'kitSystemShapeDrawerFactory', '$http', function (d3Factory, drawer, $http) {
+  'kitSystemShapeDrawerFactory', '$http',
+  function (d3Factory, drawer, $http) {
     return {
       scope: true,
       restrict: 'A',
@@ -28,8 +29,9 @@ module.exports = ['d3Factory',
                         var event = d3.event;
 
                         event.dataTransfer.effectAllowed = 'copy';
-                        // core.rect.0
-                        event.dataTransfer.setData('text', d3.select(this).attr('data-moniker'));
+                        // Пример data-moniker: core.rect.0
+                        event.dataTransfer.setData('text',
+                          d3.select(this).attr('data-moniker'));
                       });
 
                     var svg = thumbnail.append('svg')
@@ -49,8 +51,10 @@ module.exports = ['d3Factory',
                       var bBox = holder.node().getBBox();
 
                       var offset = [
-                        thumbnail.node().offsetWidth / 2 - (bBox.width + 2 * bBox.x) / 2,
-                        thumbnail.node().offsetHeight / 2 - (bBox.height + 2 * bBox.y) / 2
+                        thumbnail.node().offsetWidth / 2
+                          - (bBox.width + 2 * bBox.x) / 2,
+                        thumbnail.node().offsetHeight / 2
+                          - (bBox.height + 2 * bBox.y) / 2
                       ];
 
                       holder.attr('transform', 'translate(' + offset + ')');
@@ -61,7 +65,7 @@ module.exports = ['d3Factory',
             }
           }, function errorCallback(response) {
             console.log(':<(');
-          })
+          });
 
         });
       }

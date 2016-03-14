@@ -20,5 +20,9 @@ html
         button(data-ng-click="center($event)" data-ng-bind="editor.testValue | uppercase")
         div(data-kit-pallete)
 
+        div.ui-router-test
+          a(ui-sref='test123') Перейти на страницу /test
+          div(ui-view)
+
   //- <script src="/build/combined.js"></script>
   script(src="/build/combined.js")

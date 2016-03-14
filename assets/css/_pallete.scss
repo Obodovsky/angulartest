@@ -1,4 +1,4 @@
-#pallete {
+#pallete, .ui-router-test {
   position: absolute;
   left: 0;
   top: 0;
@@ -77,4 +77,29 @@
 
 .collapsed #pallete {
   transform: translateX(-23.5em);
+}
+
+.ui-router-test {
+  right: 0;
+  left: inherit;
+  background: grey;
+
+  a {
+    position: absolute;
+    left: 1%;
+    cursor: pointer;
+    top: 10%;
+    border-radius: 0;
+    color: #fff;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  span {
+    font-size: 150%;
+    color: #fff;
+  }
 }

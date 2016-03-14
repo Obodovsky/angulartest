@@ -8,16 +8,20 @@
     "jade": "latest"
   },
   "devDependencies": {
-    "gulp": "latest",
-    "gulp-plumber": "latest",
+    "browser-sync": "latest",
     "browserify": "latest",
-    "gulp-sass": "latest",
+    "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-notify": "latest",
+    "gulp-plumber": "latest",
     "gulp-rename": "latest",
-    "browser-sync": "latest",
-    "vinyl-source-stream": "latest",
-    "gulp-sourcemaps": "latest"
+    "gulp-sass": "latest",
+    "gulp-sourcemaps": "latest",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.2",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7",
+    "vinyl-source-stream": "latest"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
