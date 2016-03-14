@@ -10,7 +10,7 @@ module.exports = ['d3Factory',
         // $element - обертка в jqLite
         // $attrs - массив атрибутов для DOM-элемента, на котором висит директива
         d3Factory.then(function (d3) {
-          $scope.shape.moniker = 'core.tshape';
+          $scope.shape.moniker = 'core.t-shape';
 
           $http.get('/api/data').then(function (response) {
             var list = response.data;
